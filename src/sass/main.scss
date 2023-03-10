@@ -1,0 +1,998 @@
+@use './reset';
+@use './colors' as c;
+
+@keyframes burger-animation {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+body {
+	font-family: 'Raleway', sans-serif;
+}
+.wrapper {
+	margin: 0 auto;
+	max-width: 1400px;
+}
+section {
+	scroll-margin-top: 5em;
+}
+
+.sticky-body {
+	overflow: hidden;
+}
+
+// **********nav**********
+
+.nav {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	background-color: c.$main-color;
+	z-index: 100;
+	.nav-items {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+		padding: 1em;
+		z-index: 100;
+
+		.burger {
+			padding: 1em;
+			border: none;
+			background-color: transparent;
+			cursor: pointer;
+			.close-menu,
+			.open-menu {
+				display: none;
+			}
+
+			.active {
+				display: block;
+				opacity: 0;
+				animation: burger-animation 1s forwards;
+			}
+		}
+
+		.nav-links {
+			position: absolute;
+			top: 8em;
+			right: 0;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			width: 100%;
+			min-height: 40vh;
+			background-color: c.$main-color;
+			transform: translateX(100%);
+			transition: transform 0.5s;
+			z-index: 5;
+
+			.nav-link {
+				font-size: 2rem;
+				padding: 0.6em;
+				text-decoration: none;
+				color: c.$second-color;
+				margin: 1em;
+			}
+		}
+		.active-link {
+			transform: translateX(0%);
+		}
+
+		.logo-tree {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			span {
+				font-size: 3.6rem;
+			}
+		}
+	}
+}
+
+// **********header***********
+
+.header,
+.header-contact {
+	.header-bg {
+		background-image: url('../../dist/img/stair_640.jpg');
+	}
+	.header-bg-contact {
+		background-image: url('../../dist/img/man-5907625_640.jpg');
+	}
+	.header-bg,
+	.header-bg-contact {
+		position: relative;
+		display: flex;
+		align-items: center;
+		min-height: 40em;
+		margin-top: 8em;
+
+		background-size: cover;
+		background-position: 50%;
+		color: c.$main-color;
+
+		.header-title,
+		.header-title-contact {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			padding: 0.5em;
+			color: c.$main-color;
+			z-index: 2;
+			::after {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0, 0, 0, 0.3);
+				z-index: -1;
+			}
+
+			h1 {
+				font-size: 3rem;
+				text-align: center;
+				letter-spacing: 1.5px;
+			}
+			p {
+				font-size: 1.5rem;
+				letter-spacing: 1px;
+			}
+		}
+	}
+}
+
+// **********main / about us section**********
+
+.about-us {
+	margin-bottom: 6em;
+
+	.section-title {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		min-height: 6em;
+		font-size: 3rem;
+		letter-spacing: 1px;
+		text-transform: uppercase;
+		font-weight: lighter;
+	}
+
+	.about-us-container {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+
+		.about-us-img {
+			width: 340px;
+			border-radius: 3px;
+			box-shadow: 0 0 20px c.$icon-color;
+		}
+
+		.about-us-text {
+			h2 {
+				font-weight: bold;
+				text-align: center;
+				margin: 1em 0 0.4em;
+				font-size: 2.4rem;
+				letter-spacing: 1px;
+			}
+			p {
+				margin: 0 2em;
+				text-align: center;
+				font-size: 1.2rem;
+				line-height: 2em;
+				letter-spacing: 1px;
+			}
+		}
+	}
+}
+
+// **********main / adventure section**********
+
+.adventure {
+	.adventure-bg {
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		min-height: 35em;
+		background-image: url('../../dist/img/girl-g035914b18_640.jpg');
+		background-size: cover;
+		background-position: 50%;
+		color: c.$main-color;
+		z-index: 0;
+
+		::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.4);
+			z-index: -1;
+		}
+
+		p {
+			letter-spacing: 1px;
+			text-align: center;
+			padding: 0.5em 1.5em;
+			font-size: 2rem;
+			font-weight: bold;
+			border: 1px solid c.$main-color;
+			z-index: 1;
+		}
+	}
+}
+
+//********** main/offers section **********
+.offers {
+	.offers-header {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+
+		h2 {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin-top: 1.5em;
+			min-height: 2em;
+			font-size: 3.4rem;
+			letter-spacing: 1px;
+			text-transform: uppercase;
+			font-weight: lighter;
+		}
+		p {
+			margin-bottom: 2em;
+			margin-left: 0.5em;
+			font-size: 1.6rem;
+			letter-spacing: 0.5px;
+		}
+	}
+	.container-for-offers {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+
+		.offer {
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+			align-items: center;
+			margin: 2em;
+			width: 25em;
+			height: 35em;
+			box-shadow: 0 0 30px c.$icon-color;
+			border-radius: 8px;
+
+			.offer-card {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				height: 100%;
+				list-style: none;
+
+				li {
+					align-self: flex-start;
+					margin-bottom: 0.5em;
+					font-size: 1.8rem;
+
+					.ti-check {
+						color: c.$btn-color;
+					}
+				}
+
+				h3 {
+					margin-top: 1em;
+					margin-bottom: 0.5em;
+					font-size: 2rem;
+					font-weight: lighter;
+				}
+				p {
+					font-size: 3.2rem;
+					font-weight: bold;
+					margin-bottom: 0.5em;
+				}
+			}
+			.choise-offer {
+				margin-bottom: 1.2em;
+				width: 80%;
+				height: 3.5em;
+				font-size: 1.5rem;
+				letter-spacing: 0.5px;
+				background-color: transparent;
+				border: none;
+				box-shadow: 0 0 5px c.$icon-color;
+				cursor: pointer;
+				border-radius: 8px;
+				transition: background-color 0.3s;
+			}
+			.choise-offer:hover {
+				background-color: c.$btn-color;
+			}
+		}
+	}
+
+	.other-offers {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		height: 12em;
+		.others-offers-link {
+			line-height: 3em;
+			text-align: center;
+			color: c.$second-color;
+			width: 10em;
+			height: 3em;
+			font-size: 2.4rem;
+			text-decoration: none;
+			box-shadow: 0 0 30px c.$icon-color;
+			border-radius: 8px;
+			transition: background-color 0.3s;
+		}
+		:hover {
+			background-color: c.$btn-color;
+		}
+	}
+}
+
+//**********main/company-links section **********
+.company-links-bg {
+	background-color: c.$background-color;
+
+	.company-links {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+		align-items: center;
+		margin-top: 0.5em;
+		font-size: 4rem;
+		color: c.$icon-color;
+
+		.logo-wrapper {
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
+			margin-bottom: 0.5em;
+
+			p {
+				padding: 1em 0;
+				font-size: 4rem;
+			}
+		}
+
+		.company-links-container {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+
+			.link-box {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				width: 15em;
+				height: 15em;
+				margin: 0 1em;
+				font-size: 2rem;
+
+				p {
+					font-weight: bold;
+					margin-bottom: 2em;
+					letter-spacing: 1px;
+				}
+				ul {
+					list-style: none;
+					li {
+						position: relative;
+						margin-bottom: 2em;
+						text-align: center;
+						a {
+							font-size: 1.8rem;
+							letter-spacing: 1px;
+							padding: 1.2em;
+							text-decoration: none;
+							color: c.$icon-color;
+						}
+
+						// test
+						.company-link,
+						.company-link::after,
+						.company-link::before {
+							transition: width 0.3s;
+						}
+						.company-link::before,
+						.company-link::after {
+							content: '';
+							position: absolute;
+							width: 0;
+							bottom: -3px;
+							border-bottom: 1.5px solid c.$icon-color;
+						}
+						.company-link::before {
+							right: 50%;
+						}
+						.company-link::after {
+							left: 50%;
+						}
+						.company-link:hover::before,
+						.company-link:hover::after {
+							width: 40%;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// **********foooter**********
+.footer {
+	padding: 30px 10px;
+	text-align: center;
+	font-size: 1.6rem;
+	background-color: c.$background-color;
+
+	.footer-line {
+		width: 100%;
+		height: 1px;
+		margin-bottom: 1em;
+		background-color: c.$icon-color;
+	}
+}
+
+// **********contact.html / map section**********
+
+.contact-h2 {
+	font-size: 3.4rem;
+	margin-top: 1.2em;
+	min-height: 2em;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	font-weight: lighter;
+}
+
+.map {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	.route-map {
+		iframe {
+			max-width: 320px;
+			box-shadow: 0 0 20px c.$icon-color;
+			border-radius: 6px;
+			margin-bottom: 3em;
+		}
+	}
+}
+
+// **********contact.html / contact section**********
+.contact {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: c.$background-color;
+	.contact-wrapper {
+		.logo-wrapper {
+			display: none;
+		}
+
+		.contact-details {
+			.ti {
+				font-size: 3rem;
+			}
+			.adress {
+				margin-bottom: 2em;
+			}
+			p {
+				text-align: center;
+				font-size: 2.1rem;
+				letter-spacing: 0.5px;
+				line-height: 4rem;
+			}
+		}
+	}
+}
+
+// **********offer.html / forest-offer section**********
+
+.forest-offer {
+	.forest-offers-header {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		margin-bottom: 4em;
+
+		p {
+			font-size: 5rem;
+		}
+	}
+	.forest-offer-container {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		margin: 2em 0;
+
+		.forest-offer-line {
+			margin: 3em 0 2em;
+			width: 80%;
+			height: 1px;
+			background-color: c.$icon-color;
+		}
+
+		h3 {
+			padding: 0.5em;
+			font-size: 2.6rem;
+			font-weight: lighter;
+			letter-spacing: 2px;
+		}
+		.forest-offer-price {
+			font-size: 4rem;
+		}
+
+		.forest-offer-img {
+			img {
+				margin-top: 2em;
+				width: 350px;
+				box-shadow: 0 0 20px c.$icon-color;
+				border-radius: 6px;
+			}
+		}
+
+		.forest-offer-items {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			margin: 2em 0;
+
+			.forest-offer-text {
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				align-items: center;
+				padding: .5em 1em;
+				font-size: 2rem;
+				line-height: 3.6rem;
+				letter-spacing: 0.5px;
+
+				p{
+					text-align: center;
+				}
+
+				.forest-offer-card {
+					align-self: flex-start;
+					margin-top: 0.5em;
+					list-style: none;
+					padding:0 1em;
+
+					.ti-check {
+						color: c.$btn-color;
+					}
+				}
+			}
+
+			.forest-choise-offer {
+				width: 90%;
+				min-height: 3em;
+				margin-top: 1em;
+				border-radius: 6px;
+				font-size: 1.8rem;
+				letter-spacing: 0.5px;
+				box-shadow: 0 0 30px c.$icon-color;
+				border: none;
+				background-color: c.$background-color;
+				transition: background-color 0.3s;
+				cursor: pointer;
+			}
+			.forest-choise-offer:hover {
+				background-color: c.$btn-color;
+			}
+		}
+	}
+}
+
+@media (min-width: 768px) {
+	// **********header**********
+	.header,
+	.header-contact {
+		.header-bg,
+		.header-bg-contact {
+			.header-title,
+			.header-title-contact {
+				p {
+					font-size: 2.4rem;
+				}
+				h1 {
+					font-size: 4rem;
+				}
+			}
+		}
+	}
+
+	// **********main / adventure section**********
+	.adventure {
+		.adventure-bg {
+			p {
+				font-size: 3.4rem;
+			}
+		}
+	}
+
+	//********** main/offers section **********
+	.offers {
+		.offers-header {
+			p {
+				font-size: 1.9rem;
+			}
+		}
+		.container-for-offers {
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
+		}
+	}
+
+	//**********main/company-links section **********
+	.company-links-bg {
+		.company-links {
+			.company-links-container {
+				flex-direction: row;
+
+				.link-box {
+					justify-content: flex-start;
+					width: 13em;
+					margin: 0;
+				}
+			}
+		}
+	}
+	// **********contact.html / map section**********
+	.map {
+		.route-map {
+			iframe {
+				min-width: 720px;
+			}
+		}
+	}
+
+	// **********contact.html / contact section**********
+	.contact {
+		.contact-wrapper {
+			display: flex;
+			justify-content: space-evenly;
+			align-items: center;
+			width: 1200px;
+
+			.logo-wrapper {
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+				align-items: center;
+				p {
+					padding: 1em 0;
+					font-size: 4rem;
+				}
+			}
+		}
+	}
+
+	// **********offer.html / forest-offer section**********
+	.forest-offer {
+		.forest-offer-container {
+			h3 {
+				padding: 0.5em;
+				font-size: 3.2rem;
+			}
+			.forest-offer-price {
+				font-size: 4rem;
+			}
+
+			.forest-offer-img {
+				img {
+					margin-top: 4em;
+					width: 650px;
+				}
+			}
+
+			.forest-offer-items {
+				.forest-offer-text {
+					width: 85%;
+
+					.forest-offer-card {
+						align-self: center;
+					}
+				}
+
+				.forest-choise-offer {
+					width: 50%;
+				}
+			}
+		}
+	}
+}
+
+@media (min-width: 992px) {
+	// **********nav**********
+
+	.nav {
+		background-color: c.$main-color;
+		min-height: 4em;
+		font-size: 2rem;
+		.nav-items {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-between;
+			padding: 0;
+			height: 100%;
+
+			.burger {
+				display: none;
+			}
+
+			.logo-tree,
+			.nav-links {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+
+				a {
+					display: flex;
+					align-items: stretch;
+				}
+			}
+
+			.nav-links {
+				position: static;
+				flex-direction: row;
+				min-height: 4em;
+				transform: translateX(0);
+				width: 65%;
+				justify-content: flex-end;
+
+				.nav-link {
+					margin: 0;
+					padding: 1.5em;
+					font-size: 2.4rem;
+					color: c.$second-color;
+					text-decoration: none;
+					transition: background-color 0.3s, color 0.3s;
+				}
+				.nav-link:hover {
+					color: c.$main-color;
+					background-color: c.$second-color;
+				}
+			}
+			.logo-tree {
+				a {
+					text-decoration: none;
+				}
+				span {
+					font-size: 4rem;
+					color: c.$icon-color;
+				}
+			}
+		}
+	}
+
+	// **********header**********
+	.header,
+	.header-contact {
+		.header-bg {
+			background-image: url('../../dist/img/stair_1280.jpg');
+		}
+		.header-bg-contact {
+			background-image: url('../../dist/img/man-5907625_1920.jpg');
+		}
+		.header-bg,
+		.header-bg-contact {
+			min-height: 60em;
+
+			.header-title,
+			.header-title-contact {
+				h1,
+				p {
+					align-self: flex-start;
+					margin-left: 1rem;
+				}
+				h1 {
+					font-size: 6rem;
+				}
+				p {
+					font-size: 2.5rem;
+				}
+			}
+		}
+	}
+
+	// **********main / about us section**********
+	.about-us {
+		.section-title {
+			font-size: 3.4rem;
+		}
+
+		.about-us-container {
+			flex-direction: row;
+			align-items: flex-start;
+			margin: 0 2em;
+
+			.about-us-img {
+				width: 35vw;
+			}
+
+			.about-us-text {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				margin-left: 3em;
+				h2 {
+					font-size: 3rem;
+					text-align: left;
+					font-weight: bold;
+					margin-top: 0;
+				}
+				p {
+					margin: 0;
+					text-align: left;
+					font-size: 1.4rem;
+					letter-spacing: 0.5px;
+					line-height: 3em;
+				}
+			}
+		}
+	}
+
+	// **********main / adventure section**********
+	.adventure {
+		.adventure-bg {
+			background-image: url('../../dist/img/girl-gc56ec05ff_1280.jpg');
+
+			p {
+				font-size: 5rem;
+			}
+		}
+	}
+
+	//********** main/offers section **********
+	.offers {
+		.offers-header {
+			p {
+				font-size: 1.9rem;
+			}
+		}
+		.container-for-offers {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			margin: 0 10em 3em;
+
+			.offer {
+				margin: 0 3em;
+
+				.offer-card {
+					h3 {
+						font-size: 2.2rem;
+						font-weight: 400;
+					}
+					p {
+						font-size: 3.4rem;
+						font-weight: 700;
+						letter-spacing: 1px;
+					}
+				}
+			}
+		}
+	}
+
+	//**********main/company-links section **********
+	.company-links-bg {
+		.company-links {
+			display: flex;
+			flex-direction: row;
+			.logo-wrapper {
+				width: 50%;
+				p {
+					font-size: 6rem;
+				}
+			}
+
+			.company-links-container {
+				flex-direction: row;
+				align-items: center;
+				justify-content: center;
+				width: 50%;
+
+				.link-box {
+					justify-content: flex-start;
+					width: 20em;
+					margin: 4em 2em 0;
+				}
+			}
+		}
+	}
+
+	// **********contact.html / map section**********
+	.map {
+		.route-map {
+			iframe {
+				min-width: 900px;
+			}
+		}
+	}
+
+	// **********offer.html / forest-offer section**********
+
+	.forest-offer {
+		background-color: c.$background-color;
+		.forest-offers-header {
+			p {
+				font-size: 4rem;
+			}
+		}
+		.forest-offer-container {
+			margin-bottom: 0;
+			h3 {
+				font-size: 2.6rem;
+			}
+			.forest-offer-price {
+				position: relative;
+				font-size: 3.6rem;
+			}
+
+			.forest-offer-img {
+				img {
+					margin: 2em 0;
+					width: 850px;
+				}
+			}
+
+			.forest-offer-items {
+				.forest-offer-text {
+					flex-direction: row;
+					justify-content: center;
+					align-items: center;
+					line-height: 4rem;
+
+					p {
+						align-self: flex-start;
+						width: 40%;
+						padding: 1em;
+					}
+
+					.forest-offer-card {
+						padding: .5em;
+						align-self: center;
+					}
+				}
+
+				.forest-choise-offer {
+					width: 25%;
+				}
+			}
+		}
+	}
+}
